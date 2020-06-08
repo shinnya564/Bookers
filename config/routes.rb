@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'top' => 'bookers#top'
-  get 'books' => 'bookers#books'
-
-  resources :books
+  get '' => 'books#top'
+  resources :books, only: [:edit, :update , :show, :destroy, :index, :create]
 
 end
