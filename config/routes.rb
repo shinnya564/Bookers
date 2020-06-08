@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get 'top' => 'bookers#top'
   get 'books' => 'bookers#books'
 
+  resources :books
+
 end
