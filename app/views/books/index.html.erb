@@ -3,7 +3,9 @@
 	</head>
 
 	<body>
-		<p></p>
+		<p id="notice">
+ 			<%=  notice %>
+		</p>
 		<h1>Books</h1>
 
 	<table>
@@ -20,22 +22,31 @@
 				<tr>
 					<td><%= list.title %></td>
 					<td><%= list.body %></td>
-					<td><%= link_to 'Show', "http://localhost:3000/books/#{list.id}" %></td>
-					<td><%= link_to 'Edit', "http://localhost:3000/books/#{list.id}/edit" %></td>
-					<td><%= link_to 'Destroy', "http://localhost:3000/books/#{list.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<td><%= link_to 'Show', "/books/#{list.id}" %></td>
+					<td><%= link_to 'Edit', "/books/#{list.id}/edit" %></td>
+					<td><%= link_to 'Destroy', "/books/#{list.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					<td><br></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
 
+
 	<h1>New book</h1>
+	<% if @book.errors.any? %>
+    	<ul>
+      		<% @book.errors.full_messages.each do |message| %>
+        		<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
 	<%= form_for(@book) do |f| %>
 		<h5>タイトル</h5>
 		<%= f.text_field :title %>
 		<h5>本文</h5>
 		<%= f.text_area :body %>
 		<h5></h5>
-		<%= f.submit 'create book' %>
+		<%= f.submit 'Create Book' %>
 	<% end %>
 
