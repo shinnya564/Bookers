@@ -1,0 +1,24 @@
+
+  <head>
+    <title>WebCampBackendNew</title>
+  </head>
+
+  <body>
+    <p><%= flash[:notice] %></p>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @book.title %>
+    </p>
+
+    <p>
+      <strong>Body:</strong>
+      <%= @book.body %>
+    </p>
+
+    <p>
+      <%= link_to 'edit', "http://localhost:3000/books/#{@book.id}/edit" %>
+      |
+      <%= link_to 'back', "http://localhost:3000/books" %>
+    </p>
+  </body>

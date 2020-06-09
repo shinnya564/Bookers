@@ -3,7 +3,7 @@
 	</head>
 
 	<body>
-		<p id="notice"></p>
+		<p></p>
 		<h1>Books</h1>
 
 	<table>
@@ -16,12 +16,12 @@
   		</thead>
 
 		<tbody>
-			<%= @books.each do |list| %>
+			<% @books.each do |list| %>
 				<tr>
 					<td><%= list.title %></td>
 					<td><%= list.body %></td>
 					<td><%= link_to 'Show', "http://localhost:3000/books/#{list.id}" %></td>
-					<td><%= link_to 'Edit', "http://localhost:3000/books/#{list.id}" %></td>
+					<td><%= link_to 'Edit', "http://localhost:3000/books/#{list.id}/edit" %></td>
 					<td><%= link_to 'Destroy', "http://localhost:3000/books/#{list.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					<td><br></td>
 				</tr>
@@ -29,12 +29,13 @@
 		</tbody>
 	</table>
 
-	<h4>本文</h4>
-	<%= form_for(@newbook, url: books_path, method: :post) do |f| %>
-		<h4>タイトル</h4>
+	<h1>New book</h1>
+	<%= form_for(@book) do |f| %>
+		<h5>タイトル</h5>
 		<%= f.text_field :title %>
-		<h4>本文</h4>
+		<h5>本文</h5>
 		<%= f.text_area :body %>
-		<%= f.submit '投稿' %>
+		<h5></h5>
+		<%= f.submit 'create book' %>
 	<% end %>
 

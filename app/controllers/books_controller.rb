@@ -7,10 +7,7 @@ class BooksController < ApplicationController
 	def index
 		@books = Book.all
 		#new 処理
-		@newbook = Book.new
-		book = Book.find(params[:id])
-    	book.destroy
-    	redirect_to  "http://localhost:3000/books"
+		@book = Book.new
 	end
 
 	def show
@@ -22,9 +19,9 @@ class BooksController < ApplicationController
 	end
 
 	def create
-    	book = Book.new(books_params)
+    	@book = Book.new(books_params)
     	book.save
-    	redirect_to book_path(book.id)
+    	redirect_to book_path(book)
 	end
 
 	def update
@@ -34,9 +31,9 @@ class BooksController < ApplicationController
 	end
 
 	def destroy
- 		book = Book.find(params[:id])
+ 		@book = Book.find(params[:id])
     	book.destroy
-    	redirect_to book_path
+    	redirect_to "http://localhost:3000/books"
 	end
 
 	private
