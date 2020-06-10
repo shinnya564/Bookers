@@ -24,7 +24,7 @@ class BooksController < ApplicationController
     	if @book.save
 	    	redirect_to book_path(@book), notice:'Book was successfully created.'
 	    else
-	    	render :index
+	    	render :index, notice: 'errors prohibited this book from being saved:'
 	    end
 	end
 
